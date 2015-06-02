@@ -1,0 +1,29 @@
+{
+  "name": "script-ci-ui",
+  "version": "1.0.0",
+  "authors": [
+    "albu <alex.butler@zuhlke.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "GPLv3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-animate": "~1.4.0",
+    "angular-route": "~1.4.0",
+    "jquery": "~2.1.4",
+    "animate.css": "~3.3.0",
+    "bootstrap": "~3.3.4",
+    "fontawesome": "~4.3.0",
+    "codemirror": "~5.3.0",
+    "lodash": "~3.9.3"
+  }
+}
