@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Script CI UI</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="app.css"> -->
+  <link rel="stylesheet" href="lib/codemirror/codemirror.all.css">
+  <style type="text/css">
+      .codewrap { display: inline-block; width: 32%; margin: 0 .5em .5em 0; }
+      body { background: grey; }
+    </style>
+    <script src="lib/codemirror/lib/codemirror.js"></script>
+    <script type="text/javascript" src="lib/codemirror/codemirror.all.js"></script>
+    <!--
+    <script src="lib/codemirror/mode/apl/apl.js"></script>
+    <script src="lib/codemirror/mode/asciiarmor/asciiarmor.js"></script>
+    <script src="lib/codemirror/mode/asn.1/asn.1.js"></script>
+    <script src="lib/codemirror/mode/asterisk/asterisk.js"></script>
+    <script src="lib/codemirror/mode/clike/clike.js"></script>
+    <script src="lib/codemirror/mode/clojure/clojure.js"></script>
+    <script src="lib/codemirror/mode/cmake/cmake.js"></script>
+    <script src="lib/codemirror/mode/cobol/cobol.js"></script>
+    <script src="lib/codemirror/mode/coffeescript/coffeescript.js"></script>
+    <script src="lib/codemirror/mode/commonlisp/commonlisp.js"></script>
+    <script src="lib/codemirror/mode/css/css.js"></script>
+    <script src="lib/codemirror/mode/cypher/cypher.js"></script>
+    <script src="lib/codemirror/mode/d/d.js"></script>
+    <script src="lib/codemirror/mode/dart/dart.js"></script>
+    <script src="lib/codemirror/mode/diff/diff.js"></script>
+    <script src="lib/codemirror/mode/django/django.js"></script>
+   <script src="lib/codemirror/mode/dockerfile/dockerfile.js"></script>
+    <script src="lib/codemirror/mode/dtd/dtd.js"></script>
+    <script src="lib/codemirror/mode/dylan/dylan.js"></script>
+    <script src="lib/codemirror/mode/ebnf/ebnf.js"></script>
+    <script src="lib/codemirror/mode/ecl/ecl.js"></script>
+    <script src="lib/codemirror/mode/eiffel/eiffel.js"></script>
+    <script src="lib/codemirror/mode/erlang/erlang.js"></script>
+    <script src="lib/codemirror/mode/forth/forth.js"></script>
+    <script src="lib/codemirror/mode/fortran/fortran.js"></script>
+    <script src="lib/codemirror/mode/gas/gas.js"></script>
+    <script src="lib/codemirror/mode/gfm/gfm.js"></script>
+    <script src="lib/codemirror/mode/gherkin/gherkin.js"></script>
+    <script src="lib/codemirror/mode/go/go.js"></script>
+    <script src="lib/codemirror/mode/groovy/groovy.js"></script>
+    <script src="lib/codemirror/mode/haml/haml.js"></script>
+    <script src="lib/codemirror/mode/handlebars/handlebars.js"></script>
+    <script src="lib/codemirror/mode/haskell/haskell.js"></script>
+    <script src="lib/codemirror/mode/haxe/haxe.js"></script>
+    <script src="lib/codemirror/mode/htmlembedded/htmlembedded.js"></script>
+    <script src="lib/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="lib/codemirror/mode/http/http.js"></script>
+    <script src="lib/codemirror/mode/idl/idl.js"></script>
+    <script src="lib/codemirror/mode/jade/jade.js"></script>
+    <script src="lib/codemirror/mode/javascript/javascript.js"></script>
+    <script src="lib/codemirror/mode/jinja2/jinja2.js"></script>
+    <script src="lib/codemirror/mode/julia/julia.js"></script>
+    <script src="lib/codemirror/mode/kotlin/kotlin.js"></script>
+    <script src="lib/codemirror/mode/livescript/livescript.js"></script>
+    <script src="lib/codemirror/mode/lua/lua.js"></script>
+    <script src="lib/codemirror/mode/markdown/markdown.js"></script>
+    <script src="lib/codemirror/mode/mathematica/mathematica.js"></script>
+    <script src="lib/codemirror/mode/mirc/mirc.js"></script>
+    <script src="lib/codemirror/mode/mllike/mllike.js"></script>
+    <script src="lib/codemirror/mode/modelica/modelica.js"></script>
+    <script src="lib/codemirror/mode/mumps/mumps.js"></script>
+    <script src="lib/codemirror/mode/nginx/nginx.js"></script>
+    <script src="lib/codemirror/mode/ntriples/ntriples.js"></script>
+    <script src="lib/codemirror/mode/octave/octave.js"></script>
+    <script src="lib/codemirror/mode/pascal/pascal.js"></script>
+    <script src="lib/codemirror/mode/pegjs/pegjs.js"></script>
+    <script src="lib/codemirror/mode/perl/perl.js"></script>
+    <script src="lib/codemirror/mode/php/php.js"></script>
+    <script src="lib/codemirror/mode/pig/pig.js"></script>
+    <script src="lib/codemirror/mode/properties/properties.js"></script>
+    <script src="lib/codemirror/mode/puppet/puppet.js"></script>
+    <script src="lib/codemirror/mode/python/python.js"></script>
+    <script src="lib/codemirror/mode/q/q.js"></script>
+    <script src="lib/codemirror/mode/r/r.js"></script>
+    <script src="lib/codemirror/mode/rpm/rpm.js"></script>
+    <script src="lib/codemirror/mode/rst/rst.js"></script>
+    <script src="lib/codemirror/mode/ruby/ruby.js"></script>
+    <script src="lib/codemirror/mode/rust/rust.js"></script>
+    <script src="lib/codemirror/mode/sass/sass.js"></script>
+    <script src="lib/codemirror/mode/scheme/scheme.js"></script>
+    <script src="lib/codemirror/mode/shell/shell.js"></script>
+    <script src="lib/codemirror/mode/sieve/sieve.js"></script>
+    <script src="lib/codemirror/mode/slim/slim.js"></script>
+    <script src="lib/codemirror/mode/smalltalk/smalltalk.js"></script>
+    <script src="lib/codemirror/mode/smarty/smarty.js"></script>
+    <script src="lib/codemirror/mode/solr/solr.js"></script>
+    <script src="lib/codemirror/mode/soy/soy.js"></script>
+    <script src="lib/codemirror/mode/sparql/sparql.js"></script>
+    <script src="lib/codemirror/mode/spreadsheet/spreadsheet.js"></script>
+    <script src="lib/codemirror/mode/sql/sql.js"></script>
+    <script src="lib/codemirror/mode/stex/stex.js"></script>
+    <script src="lib/codemirror/mode/stylus/stylus.js"></script>
+    <script src="lib/codemirror/mode/tcl/tcl.js"></script>
+    <script src="lib/codemirror/mode/textile/textile.js"></script>
+    <script src="lib/codemirror/mode/tiddlywiki/tiddlywiki.js"></script>
+    <script src="lib/codemirror/mode/tiki/tiki.js"></script>
+    <script src="lib/codemirror/mode/toml/toml.js"></script>
+    <script src="lib/codemirror/mode/tornado/tornado.js"></script>
+    <script src="lib/codemirror/mode/troff/troff.js"></script>
+    <script src="lib/codemirror/mode/ttcn/ttcn.js"></script>
+    <script src="lib/codemirror/mode/ttcn-cfg/ttcn-cfg.js"></script>
+    <script src="lib/codemirror/mode/turtle/turtle.js"></script>
+    <script src="lib/codemirror/mode/vb/vb.js"></script>
+    <script src="lib/codemirror/mode/vbscript/vbscript.js"></script>
+    <script src="lib/codemirror/mode/velocity/velocity.js"></script>
+    <script src="lib/codemirror/mode/verilog/verilog.js"></script>
+    <script src="lib/codemirror/mode/xml/xml.js"></script>
+    <script src="lib/codemirror/mode/xquery/xquery.js"></script>
+    <script src="lib/codemirror/mode/yaml/yaml.js"></script>
+    <script src="lib/codemirror/mode/z80/z80.js"></script>
+    
+    <script src="lib/codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="lib/codemirror/addon/search/match-highlighter.js"></script-->
+</head>
+<body>
+  <!--[if lt IE 9]>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+ <!--  <div ng-view></div> -->
+
+  <script src="lib/jquery/dist/jquery.js"></script>
+  <script src="lib/lodash/lodash.js"></script>
+  <!--<script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
+  <script src="lib/angular-animate/angular-animate.js"></script>-->
+
+  <!-- <script src="src/app.js"></script> -->
+  <script>
+      $(document).ready(function() {
+          var text = $('<div class="codewrap"><textarea>');
+
+          var examples = {
+              shell: {
+                  code: '#!/bin/bash\n' +
+                  '\n' +
+                  '# rsync using variables\n' +
+                  'SOURCEDIR=/home/user/Documents/\n' +
+                  'DESTDIR=/media/diskid/user_backup/Documents/\n' +
+                  '\n' +
+                  'rsync -avh --exclude="*.bak" $SOURCEDIR $DESTDIR\n' +
+                  '\n' +
+                  'exit 0'
+              },
+              python: {
+                  code: '#!/usr/bin/env python3\n' +
+                      '\n' +
+                      'x = 1\n' +
+                      'if x == 1:\n' +
+                      '    # indented four spaces\n' +
+                      '    print "x is 1."\n' +
+                      'return 0'
+              },
+              javascript: {
+                  code: '#!/usr/bin/env node\n' +
+                          '\n' +
+                          'var x = 1, error = true;\n' +
+                          '\n' +
+                          'function print(text) {\n' +
+                          '    console.info(text);\n' +
+                          '}\n'+
+                          'if (x === 1) {\n' +
+                          '    // print some junk\n' +
+                          '    print("x is 1");\n' +
+                          '}\n\n' +
+                          'if (error) process.exit(1);'
+              }
+          };
+
+          ['mbo','zenburn','ambiance', 'base16-dark','monokai','twilight','3024-day','3024-night','ambiance-mobile',
+              'base16-light','blackboard','cobalt','colorforth','eclipse','elegant','erlang-dark','lesser-dark',
+              'liquibyte','mdn-like','midnight','neat','neo','night','paraiso-dark','paraiso-light','pastel-on-dark',
+              'rubyblue','solarized','the-matrix','tomorrow-night-bright','tomorrow-night-eighties','ttcn',
+              'vibrant-ink','xq-dark','xq-light']
+              .forEach(function(theme) {
+                  $('body').append('<h4>' + theme);
+                  _.forIn(examples, function(example, lang) {
+                      $('body').append(text.clone());
+
+                      var code = $('.codewrap:last').children('textarea');
+                      code.append(example.code);
+
+                      var editor = CodeMirror.fromTextArea(code[0], {
+                          mode: lang,
+                          lineNumbers: true,
+                          theme: theme/*,
+                          matchBrackets: true,
+                          highlightSelectionMatches: { minChars: 1 }*/
+                      });
+                      editor.setSize(null, 250);
+
+                  });
+              });
+      });
+  </script>
+</body>
+</html>
