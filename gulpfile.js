@@ -14,7 +14,7 @@ gulp.task('clean', function() {
 gulp.task('bundle-codemirror-js', function() {
   return gulp.src([
       'app/lib/codemirror/lib/codemirror.js',
-      'app/lib/codemirror/mode/{shell,javascript,python}/*.js',
+      'app/lib/codemirror/mode/{shell,javascript,python,clike}/*.js',
       'app/lib/codemirror/addon/edit/matchbrackets.js',
       'app/lib/codemirror/addon/search/match-highlighter.js'])
     .pipe(concat('codemirror.all.js'))
