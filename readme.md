@@ -1,6 +1,6 @@
 # Script CI UI
 
-## build
+## Build
 Clone the git repo, then run
 ```sh
   # download all node/bower dependencies
