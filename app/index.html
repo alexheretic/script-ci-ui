@@ -3,25 +3,31 @@
 <!--[if IE 7]> <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]> <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<html lang="en" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Script CI UI</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="src/app.css">
+
+  <link rel="stylesheet" href="lib/codemirror-bundle/codemirror.all.css">
+  <link rel="stylesheet" href="app.css">
+
+  <script type="text/javascript" src="lib/codemirror-bundle/codemirror.all.js"></script>
 </head>
 <body>
   <!--[if lt IE 9]>
   <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-  <div ng-view></div>
+ <!--  <div ng-view></div> -->
 
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular-route/angular-route.js"></script>
-  <script src="lib/angular-animate/angular-animate.js"></script>
   <script src="lib/jquery/dist/jquery.js"></script>
-  <script src="src/app.js"></script>
+  <script src="lib/lodash/lodash.js"></script>
+  <!--<script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
+  <script src="lib/angular-animate/angular-animate.js"></script>-->
+
+  <script src="app.js"></script>
 </body>
 </html>
