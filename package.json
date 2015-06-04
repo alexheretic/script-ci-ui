@@ -4,11 +4,12 @@
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
+    "postinstall": "bower install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "GPLv3",
-  "dependencies": {
+  "license": "GPL-3.0",
+  "devDependencies": {
     "bower": "^1.4.1",
     "gulp": "^3.9.0",
     "gulp-clean": "^0.3.1",
