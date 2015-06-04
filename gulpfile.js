@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var minifyCss = require('gulp-minify-css');
+var connect = require('gulp-connect');
 
 gulp.task('clean', function() {
   var paths = require('del').sync('dist');
@@ -60,13 +61,44 @@ gulp.task('build-src-css', function() {
     .pipe(gulp.dest('dist/'));
 });
 
-// src js -> dist/app.js
+/**
+ * src js -> dist/app.js
+ */
 gulp.task('build-src-js', function() {
-  return gulp.src('app/src/**/*.js')
+  return gulp.src(['app/src/init.js', 'app/src/**/*.js'])
     .pipe(concat('app.js'))
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('build-src', ['build-src-css', 'build-src-js']);
+/**
+ * Starts a server on port 8000
+ * with live reload enabled.
+ * http://localhost:8000/dist/index.html
+ */
+gulp.task('connect', function() {
+  connect.server({
+    port: 8000,
+    livereload: true
+  });
+});
 
+/**
+ * Reloads the dist dir on the server.
+ */
+gulp.task('reload', function () {
+  gulp.src('dist/**')
+      .pipe(connect.reload());
+});
+
+/**
+ * Watches for changes on app folder,
+ * generates all the dist files and
+ * reloads the server.
+ */
+gulp.task('watch', ['default'], function () {
+  gulp.watch(['app/**'], ['reload']);
+});
+
+gulp.task('server-watch', ['connect', 'watch']);
+gulp.task('build-src', ['build-src-css', 'build-src-js']);
 gulp.task('default', ['clean', 'build-dist', 'build-src']);

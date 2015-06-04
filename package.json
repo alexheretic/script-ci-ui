@@ -12,15 +12,15 @@
   "license": "GPL-3.0",
   "devDependencies": {
     "bower": "^1.4.1",
+    "del": "~1.2.0",
     "gulp": "^3.9.0",
-    "gulp-minify-css": "^1.1.4",
+    "gulp-concat": "~2.5.2",
+    "gulp-concat-css": "~2.2.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-less": "~3.0.3",
+    "gulp-minify-css": "~1.1.5",
     "gulp-uglify": "^1.2.0",
     "lodash": "^3.9.3",
-    "gulp-concat": "~2.5.2",
-    "del": "~1.2.0",
-    "symlink-or-copy": "~1.0.1",
-    "gulp-less": "~3.0.3",
-    "gulp-concat-css": "~2.2.0",
-    "gulp-minify-css": "~1.1.5"
+    "symlink-or-copy": "~1.0.1"
   }
 }
