@@ -1,12 +1,12 @@
 # Script CI UI
 
 ## build
-Clone the git repo download dependencies
-```
+Clone the git repo, then run
+```sh
+  # download all node/bower dependencies
   npm install
-```
-Then run gulp to build the dist directory
-```
+  # build dist/ directory
   npm run gulp
 ```
+
 This builds single page site at dist/index.html
