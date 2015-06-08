@@ -46,6 +46,9 @@ gulp.task('build-dist', ['bundle-codemirror'], function() {
     fs.exists('dist/index.html', function(exists) {
       if (!exists) symlinkOrCopySync('app/index.html', 'dist/index.html');
     });
+    fs.exists('dist/example', function(exists) {
+      if (!exists) symlinkOrCopySync('app/src/example', 'dist/example');
+    });
   });
 });
 
@@ -77,6 +80,7 @@ gulp.task('build-src-js', function() {
  */
 gulp.task('connect', function() {
   connect.server({
+    root: 'dist',
     port: 8000,
     livereload: true
   });
@@ -85,7 +89,7 @@ gulp.task('connect', function() {
 /**
  * Reloads the dist dir on the server.
  */
-gulp.task('reload', function () {
+gulp.task('reload', ['build-src'], function () {
   gulp.src('dist/**')
       .pipe(connect.reload());
 });

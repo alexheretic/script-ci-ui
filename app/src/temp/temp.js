@@ -38,11 +38,13 @@ $(document).ready(function() {
         }
     };
 
-    ['mbo','zenburn','ambiance', 'base16-dark','monokai','twilight','3024-day','3024-night','ambiance-mobile',
-        'base16-light','blackboard','cobalt','colorforth','eclipse','elegant','erlang-dark','lesser-dark',
-        'liquibyte','mdn-like','midnight','neat','neo','night','paraiso-dark','paraiso-light','pastel-on-dark',
-        'rubyblue','solarized','the-matrix','tomorrow-night-bright','tomorrow-night-eighties','ttcn',
-        'vibrant-ink','xq-dark','xq-light']
+    ['mbo'
+        //,'zenburn','ambiance', 'base16-dark','monokai','twilight','3024-day','3024-night','ambiance-mobile',
+        //'base16-light','blackboard','cobalt','colorforth','eclipse','elegant','erlang-dark','lesser-dark',
+        //'liquibyte','mdn-like','midnight','neat','neo','night','paraiso-dark','paraiso-light','pastel-on-dark',
+        //'rubyblue','solarized','the-matrix','tomorrow-night-bright','tomorrow-night-eighties','ttcn',
+        //'vibrant-ink','xq-dark','xq-light'
+    ]
         .forEach(function(theme) {
             $('body').append('<h4>' + theme);
             _.forIn(examples, function(example, lang) {
