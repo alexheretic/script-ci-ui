@@ -89,7 +89,7 @@ gulp.task('connect', function() {
 /**
  * Reloads the dist dir on the server.
  */
-gulp.task('reload', ['build-src'], function () {
+gulp.task('reload', ['build-dist',  'build-src'], function () {
   gulp.src('dist/**')
       .pipe(connect.reload());
 });

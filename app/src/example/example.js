@@ -1,15 +1,13 @@
 (function () {
-    function ExampleController() {
+  angular.module('app')
+    .config(function ($routeProvider) {
+        $routeProvider.when('/example', {
+            controller: 'ExampleController',
+            controllerAs: 'controller',
+            templateUrl: 'example/example.html'
+        })
+    })
+    .controller('ExampleController', function ExampleController() {
         console.log('example');
-    }
-
-    angular.module('app')
-        .controller('ExampleController', ExampleController)
-        .config(function ($routeProvider) {
-            $routeProvider.when('/example', {
-                controller: 'ExampleController',
-                controllerAs: 'ExampleController',
-                templateUrl: '/example/example.html'
-            })
-        });
-});
+    });
+})();
