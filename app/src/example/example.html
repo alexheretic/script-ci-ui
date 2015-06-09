@@ -1,24 +1,26 @@
 <div class="site-wrapper">
   <div class="container">
+
     <div class="row">
-      <div class="col-md-6">
-        <code-mirror class="code-mirror-box"
-          lang="controller.lang"
+      <div class="code-mirror-box">
+        <code-mirror lang="controller.lang"
           theme="controller.theme"
           code="controller.code"/>
       </div>
     </div>
 
-    <div>
+    <div class="row">
       <button type="button"
               class="btn btn-lg btn-primary"
               ng-click="controller.send()">
         Send
       </button>
     </div>
-    
-    <div>
-      <pre ng-if="controller.out" class="output-box">{{controller.out}}</pre>
+
+    <div class="row">
+      <div class="output-box">
+        <pre>{{controller.out}}</pre>
+      </div>
     </div>
   </div>
 </div>
