@@ -47,7 +47,7 @@ gulp.task('build-lib', function() {
     });
 
     gulp.src(['app/index.html']).pipe(gulp.dest('dist/'));
-    gulp.src(['app/src/example/**']).pipe(gulp.dest('dist/example/'));
+    gulp.src(['app/src/**', '!app/src/init.js']).pipe(gulp.dest('dist/'));
 
     //fs.exists('dist/index.html', function(exists) {
     //  if (!exists) symlinkOrCopySync('app/index.html', 'dist/index.html');
