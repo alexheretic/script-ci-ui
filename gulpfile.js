@@ -32,7 +32,10 @@ gulp.task('bundle-codemirror-css', function() {
 gulp.task('bundle-codemirror', ['bundle-codemirror-css', 'bundle-codemirror-js']);
 
 // sets up dist dir, adds sym links to lib, index.html
-gulp.task('build-dist', ['bundle-codemirror'], function() {
+gulp.task('build-lib-bundle', ['bundle-codemirror', 'build-lib']);
+
+// sets up dist dir, adds sym links to lib, index.html
+gulp.task('build-lib', function() {
   var fs = require('fs');
   var symlinkOrCopySync = require('symlink-or-copy').sync;
 
@@ -43,12 +46,15 @@ gulp.task('build-dist', ['bundle-codemirror'], function() {
       if (!exists) symlinkOrCopySync('app/lib', 'dist/lib');
     });
 
-    fs.exists('dist/index.html', function(exists) {
-      if (!exists) symlinkOrCopySync('app/index.html', 'dist/index.html');
-    });
-    fs.exists('dist/example', function(exists) {
-      if (!exists) symlinkOrCopySync('app/src/example', 'dist/example');
-    });
+    gulp.src(['app/index.html']).pipe(gulp.dest('dist/'));
+    gulp.src(['app/src/example/**']).pipe(gulp.dest('dist/example/'));
+
+    //fs.exists('dist/index.html', function(exists) {
+    //  if (!exists) symlinkOrCopySync('app/index.html', 'dist/index.html');
+    //});
+    //fs.exists('dist/example', function(exists) {
+    //  if (!exists) symlinkOrCopySync('app/src/example', 'dist/example');
+    //});
   });
 });
 
@@ -89,9 +95,9 @@ gulp.task('connect', function() {
 /**
  * Reloads the dist dir on the server.
  */
-gulp.task('reload', ['build-dist',  'build-src'], function () {
+gulp.task('reload', ['build-lib', 'build-src'], function () {
   gulp.src('dist/**')
-      .pipe(connect.reload());
+    .pipe(connect.reload());
 });
 
 /**
@@ -100,9 +106,9 @@ gulp.task('reload', ['build-dist',  'build-src'], function () {
  * reloads the server.
  */
 gulp.task('watch', ['default'], function () {
-  gulp.watch(['app/**'], ['reload']);
+  gulp.watch(['app/src/**'], ['reload']);
 });
 
 gulp.task('server-watch', ['connect', 'watch']);
 gulp.task('build-src', ['build-src-css', 'build-src-js']);
-gulp.task('default', ['clean', 'build-dist', 'build-src']);
+gulp.task('default', ['clean', 'build-lib-bundle', 'build-src']);
