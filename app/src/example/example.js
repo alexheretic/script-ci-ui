@@ -1,6 +1,6 @@
 (function () {
 
-  function ExampleController() {
+  function ExampleController($http) {
     this.lang = 'shell';
     this.theme = 'mbo';
     this.code = '#!/bin/bash\n' +
@@ -12,6 +12,11 @@
     'rsync -avh --exclude="*.bak" $SOURCEDIR $DESTDIR\n' +
     '\n' +
     'exit 0';
+
+    this.send = function() {
+      console.log('send: ' + this.code);
+      $http.post("http://localhost:8080/jobs/single", this.code);
+    }
   }
 
   angular.module('app')

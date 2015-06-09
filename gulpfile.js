@@ -106,7 +106,7 @@ gulp.task('reload', ['build-lib', 'build-src'], function () {
  * reloads the server.
  */
 gulp.task('watch', ['default'], function () {
-  gulp.watch(['app/src/**'], ['reload']);
+  gulp.watch(['app/index.html', 'app/src/**'], ['reload']);
 });
 
 gulp.task('server-watch', ['connect', 'watch']);

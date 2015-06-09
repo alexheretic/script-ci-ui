@@ -1,6 +1,15 @@
-<div>
+<div class="container-fluid">
+
+  <div>
     <code-mirror
-            lang="controller.lang"
-            theme="controller.theme"
-            code="controller.code"/>
+      lang="controller.lang"
+      theme="controller.theme"
+      code="controller.code"/>
+  </div>
+
+  <button type="button"
+          class="btn btn-lg btn-primary"
+          ng-click="controller.send()">Send
+  </button>
+
 </div>
