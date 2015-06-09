@@ -1,46 +1,24 @@
 <div class="site-wrapper">
-  <div class="site-wrapper-inner">
-    <div class="cover-container">
-
-      <div class="masthead clearfix">
-        <div class="inner">
-          <h3 class="masthead-brand"></h3>
-          <nav>
-            <ul class="nav masthead-nav">
-              <li class="active"><a href="">Home</a></li>
-              <li><a href="">Features</a></li>
-            </ul>
-          </nav>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <code-mirror class="code-mirror-box"
+          lang="controller.lang"
+          theme="controller.theme"
+          code="controller.code"/>
       </div>
+    </div>
 
-      <div class="container">
-        <div style="text-align: left;">
-          <code-mirror
-            lang="controller.lang"
-            theme="controller.theme"
-            code="controller.code"/>
-        </div>
-
-
-      </div>
-
-      <div class="inner cover">
-
-        <button type="button"
-                class="btn btn-lg btn-primary"
-                ng-click="controller.send()">Send
-        </button>
-      </div>
-
+    <div>
+      <button type="button"
+              class="btn btn-lg btn-primary"
+              ng-click="controller.send()">
+        Send
+      </button>
+    </div>
+    
+    <div>
       <pre ng-if="controller.out" style="text-align: left;">{{controller.out}}</pre>
-
-      <div class="mastfoot">
-        <div class="inner">
-          <p></p>
-        </div>
-      </div>
-
     </div>
   </div>
 </div>
