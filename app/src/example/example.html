@@ -1,15 +1,37 @@
-<div class="container-fluid">
+<div class="site-wrapper">
+  <div class="site-wrapper-inner">
+    <div class="cover-container">
+      <div class="masthead clearfix">
+        <div class="inner">
+          <h3 class="masthead-brand"></h3>
+          <nav>
+            <ul class="nav masthead-nav">
+              <li class="active"><a href="">Home</a></li>
+              <li><a href="">Features</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
 
-  <div>
-    <code-mirror
-      lang="controller.lang"
-      theme="controller.theme"
-      code="controller.code"/>
+      <div class="inner cover">
+        <h1 class="cover-heading"></h1>
+        <div style="text-align: left; border: 1px">
+          <code-mirror
+            lang="controller.lang"
+            theme="controller.theme"
+            code="controller.code"/>
+        </div>
+        <button type="button"
+                class="btn btn-lg btn-primary"
+                ng-click="controller.send()">Send
+        </button>
+      </div>
+
+      <div class="mastfoot">
+        <div class="inner">
+          <p></p>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <button type="button"
-          class="btn btn-lg btn-primary"
-          ng-click="controller.send()">Send
-  </button>
-
 </div>
