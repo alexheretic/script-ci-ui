@@ -13,7 +13,7 @@
     function refreshOutput() {
       $http.get("http://localhost:8080/api/jobs/single/out")
         .then(function(response) {
-          self.out = response.data;
+          self.out = response.data.log;
         });
     }
 
