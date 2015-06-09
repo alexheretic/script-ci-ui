@@ -21,14 +21,19 @@
             theme="controller.theme"
             code="controller.code"/>
         </div>
+
+
       </div>
 
       <div class="inner cover">
+
         <button type="button"
                 class="btn btn-lg btn-primary"
                 ng-click="controller.send()">Send
         </button>
       </div>
+
+      <pre ng-if="controller.out" style="text-align: left;">{{controller.out}}</pre>
 
       <div class="mastfoot">
         <div class="inner">

@@ -1,25 +1,34 @@
 (function () {
 
-  function ExampleController($http) {
+  function ExampleController($http, $timeout) {
+    var self = this;
+
     this.lang = 'shell';
     this.theme = 'mbo';
-    this.code = '#!/bin/bash\n' +
+    this.code = '#!sh\n' +
     '\n' +
-    '# rsync using variables\n' +
-    'SOURCEDIR=/home/user/Documents/\n' +
-    'DESTDIR=/media/diskid/user_backup/Documents/\n' +
-    '\n' +
-    'rsync -avh --exclude="*.bak" $SOURCEDIR $DESTDIR\n' +
-    '\n' +
+    'ls ../../.. -R\n' +
     'exit 0';
 
+    function refreshOutput() {
+      $http.get("http://localhost:8080/api/jobs/single/out")
+        .then(function(response) {
+          self.out = response.data;
+        });
+    }
+
     this.send = function() {
-      console.log('send: ' + this.code);
       $http({
         method:'POST',
         url:'http://localhost:8080/api/jobs/single',
         headers: {'content-type':'text/plain'},
         data: this.code
+      })
+      .success(function() {
+        for (var wait = 0; wait < 10000; wait += 250) {
+          // hack
+          $timeout(refreshOutput, wait);
+        }
       });
     }
   }
