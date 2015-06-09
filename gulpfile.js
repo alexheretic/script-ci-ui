@@ -66,7 +66,7 @@ gulp.task('build-src-css', function() {
   return gulp.src('app/src/**/*.less')
     .pipe(less())
     .pipe(concatCss('app.css'))
-    .pipe(minifyCss({compatibility: 'ie8'}))
+    //.pipe(minifyCss({compatibility: 'ie8'}))
     .pipe(gulp.dest('dist/'));
 });
 
