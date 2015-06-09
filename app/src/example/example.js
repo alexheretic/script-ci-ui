@@ -17,7 +17,7 @@
       console.log('send: ' + this.code);
       $http({
         method:'POST',
-        url:'http://localhost:8080/jobs/single',
+        url:'http://localhost:8080/api/jobs/single',
         headers: {'content-type':'text/plain'},
         data: this.code
       });
