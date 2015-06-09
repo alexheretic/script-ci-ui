@@ -17,9 +17,9 @@
       </button>
     </div>
 
-    <div class="row">
+    <div ng-if="controller.out" class="row">
       <div class="output-box">
-        <pre ng-if="controller.out">{{controller.out}}</pre>
+        <pre>{{controller.out}}</pre>
       </div>
     </div>
   </div>
