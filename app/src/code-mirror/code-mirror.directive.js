@@ -16,7 +16,7 @@ angular.module('app')
             highlightSelectionMatches: {minChars: 1}
           });
 
-        editor.setSize(800, 500);
+        editor.setSize(null, 400);
 
         scope.$watch('code', function(value) {
           if (value != editor.getValue())

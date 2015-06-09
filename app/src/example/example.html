@@ -1,6 +1,7 @@
 <div class="site-wrapper">
   <div class="site-wrapper-inner">
     <div class="cover-container">
+
       <div class="masthead clearfix">
         <div class="inner">
           <h3 class="masthead-brand"></h3>
@@ -13,14 +14,16 @@
         </div>
       </div>
 
-      <div class="inner cover">
-        <h1 class="cover-heading"></h1>
-        <div style="text-align: left; border: 1px">
+      <div class="container">
+        <div style="text-align: left;">
           <code-mirror
             lang="controller.lang"
             theme="controller.theme"
             code="controller.code"/>
         </div>
+      </div>
+
+      <div class="inner cover">
         <button type="button"
                 class="btn btn-lg btn-primary"
                 ng-click="controller.send()">Send
@@ -32,6 +35,7 @@
           <p></p>
         </div>
       </div>
+
     </div>
   </div>
 </div>
