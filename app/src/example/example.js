@@ -15,7 +15,12 @@
 
     this.send = function() {
       console.log('send: ' + this.code);
-      $http.post("http://localhost:8080/jobs/single", this.code);
+      $http({
+        method:'POST',
+        url:'http://localhost:8080/jobs/single',
+        headers: {'content-type':'text/plain'},
+        data: this.code
+      });
     }
   }
 
