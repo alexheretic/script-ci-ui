@@ -25,7 +25,7 @@
         data: this.code
       })
       .success(function() {
-        for (var wait = 0; wait < 10000; wait += 250) {
+        for (var wait = 0; wait < 25000; wait += 100) {
           // hack
           $timeout(refreshOutput, wait);
         }
