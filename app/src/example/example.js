@@ -10,26 +10,22 @@
     'ls ../../.. -R\n' +
     'exit 0';
 
-    function refreshOutput() {
+    function refreshOutputUntilDone() {
       $http.get("http://localhost:8080/api/jobs/single/out")
         .then(function(response) {
-          self.out = response.data.log;
+          self.out = response.data;
+          if (!self.out.ended) $timeout(refreshOutputUntilDone, 200);
         });
     }
 
     this.send = function() {
       $http({
-        method:'POST',
-        url:'http://localhost:8080/api/jobs/single',
+        method: 'POST',
+        url: 'http://localhost:8080/api/jobs/single',
         headers: {'content-type':'text/plain'},
         data: this.code
       })
-      .success(function() {
-        for (var wait = 0; wait < 25000; wait += 100) {
-          // hack
-          $timeout(refreshOutput, wait);
-        }
-      });
+      .success(refreshOutputUntilDone);
     }
   }
 
