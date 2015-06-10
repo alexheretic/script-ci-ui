@@ -52,8 +52,8 @@ gulp.task('build-lib', function() {
     //fs.exists('dist/index.html', function(exists) {
     //  if (!exists) symlinkOrCopySync('app/index.html', 'dist/index.html');
     //});
-    //fs.exists('dist/example', function(exists) {
-    //  if (!exists) symlinkOrCopySync('app/src/example', 'dist/example');
+    //fs.exists('dist/single', function(exists) {
+    //  if (!exists) symlinkOrCopySync('app/src/single', 'dist/single');
     //});
   });
 });
