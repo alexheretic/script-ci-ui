@@ -1,14 +1,18 @@
 (function () {
+  var DEFAULT_CODE =  '#!sh\n';
 
   function ExampleController($http, $timeout) {
     var self = this;
 
     this.lang = 'shell';
     this.theme = 'mbo';
-    this.code = '#!sh\n' +
-    '\n' +
-    'ls ../../.. -R\n' +
-    'exit 0';
+    this.code = DEFAULT_CODE;
+
+    $http.get('http://localhost:8080/api/jobs/single')
+      .then(function(response) {
+        if (self.code == DEFAULT_CODE)
+          self.code = response.data.script;
+      })
 
     function refreshOutputUntilDone() {
       $http.get("http://localhost:8080/api/jobs/single/out")
