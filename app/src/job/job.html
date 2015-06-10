@@ -1,0 +1,28 @@
+<div class="site-wrapper" id="job-runner">
+  <div class="container">
+
+    <div class="row">
+      <div class="code-mirror-box">
+        <code-mirror lang="controller.lang"
+          theme="controller.theme"
+          code="controller.code"/>
+      </div>
+    </div>
+
+    <div class="row">
+      <button type="button"
+              class="btn btn-lg btn-primary"
+              ng-click="controller.send()">
+        Run
+      </button>
+      <i class="fa fa-spinner fa-spin out-spinner"
+         ng-show="controller.out.started && !controller.out.ended"></i>
+    </div>
+
+    <div ng-if="controller.out.log" class="row">
+      <div class="output-box">
+        <pre class="log" scroll-glue>{{controller.out.log}}</pre>
+      </div>
+    </div>
+  </div>
+</div>
