@@ -24,6 +24,7 @@
     "bootstrap": "~3.3.4",
     "fontawesome": "~4.3.0",
     "codemirror": "~5.3.0",
-    "lodash": "~3.9.3"
+    "lodash": "~3.9.3",
+    "angular-scroll-glue": "~2.0.5"
   }
 }

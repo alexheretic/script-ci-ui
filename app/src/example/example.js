@@ -26,7 +26,7 @@
         data: this.code
       })
       .success(refreshOutputUntilDone);
-    }
+    };
   }
 
   angular.module('app')

@@ -1,4 +1,4 @@
-<div class="site-wrapper">
+<div class="site-wrapper" id="single-runner">
   <div class="container">
 
     <div class="row">
@@ -13,13 +13,15 @@
       <button type="button"
               class="btn btn-lg btn-primary"
               ng-click="controller.send()">
-        Send
+        Run
       </button>
+      <i class="fa fa-spinner fa-spin out-spinner"
+         ng-show="controller.out.started && !controller.out.ended"></i>
     </div>
 
     <div ng-if="controller.out.log" class="row">
       <div class="output-box">
-        <pre>{{controller.out.log}}</pre>
+        <pre class="log" scroll-glue>{{controller.out.log}}</pre>
       </div>
     </div>
   </div>
