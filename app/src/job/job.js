@@ -1,12 +1,22 @@
 (function () {
+
   var DEFAULT_CODE = '#!sh\n';
+  var DEFAULT_NAME = 'job 1';
 
   function JobController($http, $timeout) {
     var self = this;
 
     this.lang = 'shell';
     this.theme = 'mbo';
-    this.code = DEFAULT_CODE;
+    this.name = DEFAULT_NAME;
+
+    this.okScript = {
+      code: DEFAULT_CODE,
+      errorScript: {code: DEFAULT_CODE},
+      okScript: {code: DEFAULT_CODE}
+    };
+    this.hasOkScript = false;
+    this.hasFailScript = false;
 
     $http.get('http://localhost:8080/api/jobs/single')
       .then(function (response) {
@@ -31,6 +41,13 @@
         data: this.code
       })
         .success(refreshOutputUntilDone);
+    };
+
+    this.addOkScript = function () {
+      this.hasOkScript = !this.hasOkScript;
+    };
+    this.addFailScript = function () {
+      this.hasFailScript = !this.hasFailScript;
     };
   }
 

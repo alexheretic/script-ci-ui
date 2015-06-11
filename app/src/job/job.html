@@ -2,10 +2,47 @@
   <div class="container">
 
     <div class="row">
-      <div class="code-mirror-box">
-        <code-mirror lang="controller.lang"
-          theme="controller.theme"
-          code="controller.code"></code-mirror>
+      <h3>{{controller.name}}</h3>
+    </div>
+
+    <div class="row">
+      <div ng-class="{'col-xs-12 col-md-12 vcenter' : !controller.hasFailScript, 'col-xs-6 col-md-6 center' : controller.hasFailScript}">
+        <div class="code-mirror-box">
+          <code-mirror lang="controller.lang"
+                       theme="controller.theme"
+                       code="controller.okScript.code">
+          </code-mirror>
+          <div class="ok-button">
+            <a href="" ng-click="controller.addOkScript()">
+              <i class="fa fa-circle-o ok-icon"></i>
+            </a>
+          </div>
+        </div>
+        <div class="vcenter fail-button">
+          <a href="" ng-click="controller.addFailScript()">
+            <i class="fa fa-circle-o fail-icon"></i>
+          </a>
+        </div>
+      </div>
+
+      <div ng-if="controller.hasFailScript" class="col-xs-6 col-md-6 vcenter">
+        <div class="code-mirror-box">
+          <code-mirror lang="controller.lang"
+                       theme="controller.theme"
+                       code="controller.okScript.errorScript.code">
+          </code-mirror>
+        </div>
+      </div>
+    </div>
+
+    <div ng-if="controller.hasOkScript" class="row">
+      <div class="col-xs-12 col-md-12">
+        <div class="code-mirror-box">
+          <code-mirror lang="controller.lang"
+                       theme="controller.theme"
+                       code="controller.okScript.okScript.code">
+          </code-mirror>
+        </div>
       </div>
     </div>
 
@@ -24,5 +61,6 @@
         <pre class="log" scroll-glue>{{controller.out.log}}</pre>
       </div>
     </div>
+
   </div>
 </div>

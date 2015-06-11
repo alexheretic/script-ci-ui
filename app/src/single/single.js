@@ -1,5 +1,6 @@
 (function () {
   var DEFAULT_CODE = '#!sh\n';
+  var DEFAULT_NAME = 'script 1';
 
   function SingleController($http, $timeout) {
     var self = this;
@@ -7,6 +8,7 @@
     this.lang = 'shell';
     this.theme = 'mbo';
     this.code = DEFAULT_CODE;
+    this.name = DEFAULT_NAME;
 
     $http.get('http://localhost:8080/api/jobs/single')
       .then(function (response) {
