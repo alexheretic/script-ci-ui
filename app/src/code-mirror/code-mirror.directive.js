@@ -18,21 +18,21 @@ angular.module('app')
 
         editor.setSize(null, 400);
 
-        scope.$watch('code', function(value) {
+        scope.$watch('code', function (value) {
           if (value != editor.getValue())
             editor.setValue(value);
         });
 
-        scope.$watch('lang', function(value) {
+        scope.$watch('lang', function (value) {
           editor.setOption('mode', value);
         });
 
-        scope.$watch('theme', function(value) {
+        scope.$watch('theme', function (value) {
           editor.setOption('theme', value);
         });
 
-        editor.on('change', function() {
-          $timeout(function() {
+        editor.on('change', function () {
+          $timeout(function () {
             scope.code = editor.getValue();
           });
         });

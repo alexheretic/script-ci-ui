@@ -1,9 +1,6 @@
 (function () {
-  var DEFAULT_CODE = '#!sh\n';
 
-  function HomeController($http, $timeout) {
-    var self = this;
-  }
+  function HomeController() {}
 
   angular.module('app')
     .config(function ($routeProvider) {

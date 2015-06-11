@@ -1,0 +1,13 @@
+<div ng-controller="HeaderController as head">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul ng-repeat="p in head.paths" class="nav navbar-nav">
+          <li ng-class="{active: head.isActive(p)}">
+            <a href="#{{p.path}}">{{p.description}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
