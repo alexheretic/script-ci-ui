@@ -1,14 +1,12 @@
 (function () {
 
   var DEFAULT_CODE = '#!sh\n';
-  var DEFAULT_NAME = 'job 1';
 
   function JobController($http, $timeout, $routeParams) {
     var self = this;
     this.jobId = $routeParams.jobId;
     this.lang = 'shell';
     this.theme = 'mbo';
-    this.name = DEFAULT_NAME;
     this.hasOkScript = false;
     this.hasFailScript = false;
 
@@ -49,9 +47,13 @@
         });
     }
 
+    /**
+     * Sends job scripts to server
+     * @return promise
+     */
     this.save = function () {
       if (!self.jobId) {
-        $http({
+        return $http({
           method: 'POST',
           url: 'http://localhost:8080/api/jobs',
           headers: {'content-type': 'application/json'},
@@ -62,7 +64,7 @@
         });
       }
       else {
-        $http({
+        return $http({
           method: 'PUT',
           url: 'http://localhost:8080/api/jobs/'+ self.jobId,
           headers: {'content-type': 'application/json'},
@@ -71,13 +73,20 @@
       }
     };
 
+    /**
+     * Saves & asks the server to run the job scripts
+     * @return promise
+     */
     this.run = function() {
       delete self.status;
-      $http.post('http://localhost:8080/api/jobs/' + self.jobId + '/run')
-        .then(function(response) {
-          console.warn('Ignoring run id '+ response.data.run);
-          refreshOutputUntilDone();
-        });
+
+      return self.save().then(function() {
+        return $http.post('http://localhost:8080/api/jobs/' + self.jobId + '/run')
+          .then(function(response) {
+            console.warn('Ignoring run id '+ response.data.run);
+            refreshOutputUntilDone();
+          });
+      });
     };
 
     this.addOkScript = function () {
