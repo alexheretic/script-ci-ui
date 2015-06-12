@@ -19,7 +19,8 @@
         okScript: {code: DEFAULT_CODE}
       }
     };
-    if(this.jobId) {
+
+    if (this.jobId) {
       $http.get('http://localhost:8080/api/jobs/' + this.jobId)
       .then(function (response) {
         self.job = response.data;
@@ -27,22 +28,56 @@
     }
 
     function refreshOutputUntilDone() {
-      $http.get("http://localhost:8080/api/jobs/single/out")
+      $http.get('http://localhost:8080/api/jobs/' + self.jobId + '/status/latest')
         .then(function (response) {
-          self.out = response.data;
-          if (!self.out.ended)
+          self.status = response.data;
+
+          var combinedOut = '',
+            script = self.status.okScriptStatus;
+
+          while (script && script.log) {
+            if (combinedOut) combinedOut += '\n---\n\n';
+            combinedOut += script.log
+            script = (script.errorScriptStatus &&script.errorScriptStatus.started) ?
+              script.errorScriptStatus : script.okScriptStatus;
+          }
+
+          self.status.out = combinedOut;
+
+          if (!self.status.ended)
             $timeout(refreshOutputUntilDone, 200);
         });
     }
 
-    this.send = function () {
-      $http({
-        method: 'POST',
-        url: 'http://localhost:8080/api/jobs',
-        headers: {'content-type': 'application/json'},
-        data: this.job
-      })
-        .success(refreshOutputUntilDone);
+    this.save = function () {
+      if (!self.jobId) {
+        $http({
+          method: 'POST',
+          url: 'http://localhost:8080/api/jobs',
+          headers: {'content-type': 'application/json'},
+          data: self.job
+        })
+        .success(function(response) {
+          self.jobId = response.data.id;
+        });
+      }
+      else {
+        $http({
+          method: 'PUT',
+          url: 'http://localhost:8080/api/jobs/'+ self.jobId,
+          headers: {'content-type': 'application/json'},
+          data: self.job
+        });
+      }
+    };
+
+    this.run = function() {
+      delete self.status;
+      $http.post('http://localhost:8080/api/jobs/' + self.jobId + '/run')
+        .then(function(response) {
+          console.warn('Ignoring run id '+ response.data.run);
+          refreshOutputUntilDone();
+        });
     };
 
     this.addOkScript = function () {

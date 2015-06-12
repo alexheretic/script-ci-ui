@@ -52,18 +52,28 @@
       <div class="col-xs-12 col-md-12 mtop">
         <button type="button"
                 class="btn btn-lg btn-primary"
-                ng-click="controller.send()">
+                ng-click="controller.save()">
+          Save
+        </button>
+        <button type="button"
+                ng-show="controller.jobId"
+                class="btn btn-lg btn-primary"
+                ng-click="controller.run()">
           Run
         </button>
         <i class="fa fa-spinner fa-spin out-spinner"
-           ng-show="controller.out.started && !controller.out.ended"></i>
+           ng-show="controller.status.started && !controller.status.ended"></i>
+        <i class="fa fa-check job-ok"
+           ng-show="controller.status.exitCode === 0"></i>
+         <i class="fa fa-times job-error"
+            ng-show="controller.status.exitCode && controller.status.exitCode !== 0"></i>
       </div>
     </div>
 
-    <div ng-if="controller.out.log" class="row">
+    <div ng-if="controller.status.out" class="row">
       <div class="col-xs-12 col-md-12">
         <div class="output-box">
-          <pre class="log" scroll-glue>{{controller.out.log}}</pre>
+          <pre class="log" scroll-glue>{{controller.status.out}}</pre>
         </div>
       </div>
     </div>
