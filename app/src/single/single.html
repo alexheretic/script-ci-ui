@@ -6,29 +6,33 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-11 col-md-11 vcenter">
+      <div class="col-xs-12 col-md-12 vcenter">
         <div class="code-mirror-box">
           <code-mirror lang="controller.lang"
                        theme="controller.theme"
-                       code="controller.okScript.code">
+                       code="controller.code">
           </code-mirror>
         </div>
       </div>
     </div>
 
     <div class="row">
-      <button type="button"
-              class="btn btn-lg btn-primary"
-              ng-click="controller.send()">
-        Run
-      </button>
-      <i class="fa fa-spinner fa-spin out-spinner"
-         ng-show="controller.out.started && !controller.out.ended"></i>
+      <div class="col-xs-12 col-md-12 mtop">
+        <button type="button"
+                class="btn btn-lg btn-primary"
+                ng-click="controller.send()">
+          Run
+        </button>
+        <i class="fa fa-spinner fa-spin out-spinner"
+           ng-show="controller.out.started && !controller.out.ended"></i>
+      </div>
     </div>
 
     <div ng-if="controller.out.log" class="row">
-      <div class="output-box">
-        <pre class="log" scroll-glue>{{controller.out.log}}</pre>
+      <div class="col-xs-12 col-md-12">
+        <div class="output-box">
+          <pre class="log" scroll-glue>{{controller.out.log}}</pre>
+        </div>
       </div>
     </div>
   </div>

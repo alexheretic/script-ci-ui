@@ -1,4 +1,19 @@
 <div class="site-wrapper" id="home">
   <div class="container">
+
+    <div class="row">
+      <h3>job list</h3>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <ul ng-repeat="j in controller.jobs">
+          <li>
+            <a href="#/jobs/{{j.id}}">job {{j.id}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </div>

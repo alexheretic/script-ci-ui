@@ -1,8 +1,9 @@
 angular.module('app')
   .controller('HeaderController', function($location) {
     this.paths = [
+      {description:'Home', path:'/'},
       {description:'Single', path:'/single'},
-      {description:'Job', path:'/job'}
+      {description:'Jobs', path:'/jobs'}
     ];
 
     this.isActive = function(p) {
